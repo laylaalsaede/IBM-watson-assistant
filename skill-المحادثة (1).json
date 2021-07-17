@@ -1,0 +1,517 @@
+{
+  "intents": [
+    {
+      "intent": "استفسار",
+      "examples": [
+        {
+          "text": "احتاج مساعدة"
+        },
+        {
+          "text": "لدي استفسار"
+        },
+        {
+          "text": "لدي مشكلة"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "الطلب",
+      "examples": [
+        {
+          "text": "باستا"
+        },
+        {
+          "text": "برقر"
+        },
+        {
+          "text": "بيتزا"
+        },
+        {
+          "text": "تراميسيو"
+        },
+        {
+          "text": "قهوة"
+        },
+        {
+          "text": "كيك"
+        },
+        {
+          "text": "موية"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "انشاء_طلب",
+      "examples": [
+        {
+          "text": "أود ان اطلب"
+        },
+        {
+          "text": "ابغى اطلب"
+        },
+        {
+          "text": "اريد ان اطلب"
+        },
+        {
+          "text": "اطلب لي"
+        },
+        {
+          "text": "عندي طلب"
+        },
+        {
+          "text": "لدي طلب"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "انهاء_استفسار",
+      "examples": [
+        {
+          "text": "لا استطيع"
+        },
+        {
+          "text": "لا اقدر"
+        },
+        {
+          "text": "لا يمكنني"
+        },
+        {
+          "text": "لم استلم"
+        },
+        {
+          "text": "لم يصل"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "انهاء_الطلب",
+      "examples": [
+        {
+          "text": "take out"
+        },
+        {
+          "text": "خارجي"
+        },
+        {
+          "text": "داخلي"
+        },
+        {
+          "text": "سفري"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "ترحيب",
+      "examples": [
+        {
+          "text": "السلام عليكم"
+        },
+        {
+          "text": "السلام عليكم ورحمة الله وبركاته"
+        },
+        {
+          "text": "اهلا"
+        },
+        {
+          "text": "اهلين"
+        },
+        {
+          "text": "لو سمحت"
+        },
+        {
+          "text": "مرحبا"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "حجز_طاولة",
+      "examples": [
+        {
+          "text": "اقدر احجز"
+        },
+        {
+          "text": "حجز"
+        },
+        {
+          "text": "متوفر حجز"
+        },
+        {
+          "text": "هل لديكم حجز"
+        },
+        {
+          "text": "هل يوجد طاولات متاحة"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "sys-date",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-time",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "طلبات",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "باستا",
+          "synonyms": [
+            "Pasta",
+            "مكرونة"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "برجر",
+          "synonyms": [
+            "burger",
+            "برقر",
+            "همبرقر"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "بيتزا",
+          "synonyms": [
+            "pizza",
+            "بيدزه",
+            "بيزا"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "مشكلة",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "مشكلة",
+          "synonyms": [
+            "خطأ"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1626514969992",
+      "context": {
+        "date": "@sys-date"
+      },
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_10_1626514970007"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1626515069394",
+      "context": {
+        "number": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_2_1626515069396"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ما اليوم المناسب؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_7_1626514969992",
+      "event_name": "focus",
+      "dialog_node": "handler_3_1626514970007",
+      "previous_sibling": "handler_10_1626514970007"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ما الوقت المناسب؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_6_1626515098892",
+      "event_name": "focus",
+      "dialog_node": "handler_7_1626515098894",
+      "previous_sibling": "handler_8_1626515098894"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "كم عدد الأشخاص؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_7_1626515069394",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1626515069396",
+      "previous_sibling": "handler_2_1626515069396"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_6_1626515098892",
+      "context": {
+        "time": "@sys-time"
+      },
+      "conditions": "@sys-time",
+      "event_name": "input",
+      "dialog_node": "handler_8_1626515098894"
+    },
+    {
+      "type": "standard",
+      "title": "انشاء_طلب",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "تفضل, اكتب تفاصيل الطلب بعد هذه الرسالة "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#انشاء_طلب",
+      "dialog_node": "node_10_1626513124560",
+      "previous_sibling": "node_4_1626518704018"
+    },
+    {
+      "type": "standard",
+      "title": "انهاء_الطلب",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "تم ارسال الطلب, يرجى الانتظار "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#انهاء_الطلب",
+      "dialog_node": "node_1_1626514162547",
+      "previous_sibling": "node_7_1626513002798"
+    },
+    {
+      "type": "frame",
+      "title": "حجز_طاولة",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "تم الحجز"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#حجز_طاولة",
+      "dialog_node": "node_4_1626514951210",
+      "previous_sibling": "node_1_1626514162547"
+    },
+    {
+      "type": "frame",
+      "title": "استفسار",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "تفضل, اكتب تفاصيل المشكلة بعد هذه الرسالة"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#استفسار",
+      "dialog_node": "node_4_1626518704018",
+      "previous_sibling": "node_8_1626519235415"
+    },
+    {
+      "type": "standard",
+      "title": "ترحيب",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "اهلا وسهلا, كيف أخدمك؟"
+              },
+              {
+                "text": "اهلا وسهلا, اش حاب تطلب"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#ترحيب",
+      "dialog_node": "node_6_1626512725380",
+      "previous_sibling": "node_4_1626514951210"
+    },
+    {
+      "type": "standard",
+      "title": "الطلب",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "هل تريد الطلب داخلي او خارجي"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#الطلب",
+      "dialog_node": "node_7_1626513002798",
+      "previous_sibling": "node_10_1626513124560"
+    },
+    {
+      "type": "standard",
+      "title": "انهاء_استفسار",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "شكرا لتواصلك معنا سيقوم احد مقدمي الخدمة بالتواصل معاك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#انهاء_استفسار",
+      "dialog_node": "node_8_1626519235415",
+      "previous_sibling": "مرحبا"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1626514951210",
+      "variable": "$time",
+      "dialog_node": "slot_6_1626515098892",
+      "previous_sibling": "slot_7_1626515069394"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1626514951210",
+      "variable": "$date",
+      "dialog_node": "slot_7_1626514969992"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1626514951210",
+      "variable": "$number",
+      "dialog_node": "slot_7_1626515069394",
+      "previous_sibling": "slot_7_1626514969992"
+    },
+    {
+      "type": "standard",
+      "title": "مرحبا",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "مرحبا، كيف يمكنني مساعدتك؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "مرحبا"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": ":هل قصدت",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "كل ما سبق خطأ"
+    },
+    "human_agent_assist": {
+      "prompt": ":هل قصدت"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "المحادثة",
+  "language": "ar",
+  "description": ""
+}
